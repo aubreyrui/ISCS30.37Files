@@ -12,7 +12,6 @@
         },
         methods: {
             async submit() {
-                this.$emit('submit',this.form)
                 console.log(this.form)
             }
         }
