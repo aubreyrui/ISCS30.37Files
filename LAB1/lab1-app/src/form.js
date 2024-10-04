@@ -36,7 +36,7 @@ function MyForm() {
                 onChange={handleChange}/>
             </label>
             <label>
-                Phone Number (09xx-xxx-xxxx:)
+                Phone Number (09xx-xxx-xxxx):
                 <input type="text"
                 name = "phone_number"
                 values = {inputs.phone_number || ""}
