@@ -1,7 +1,9 @@
 <template>
   <div class="about">
     <h1>This is an about page</h1>
-    <ClickerDos :label="name"/>
+    <Clicker />
+    <Clicker :label="name"/>
+
     <ul>
     <li v-for="item in items">
       {{ item.message }}
@@ -13,15 +15,14 @@
   </div>
 </template>
 
-<style>
-
-</style>
-
 <script setup>
-import { ref } from 'vue'
+  import { ref } from 'vue'
 
-import ClickerDos from '@/components/ClickerDos.vue'
+  import Clicker from '@/components/Clicker.vue'
 
-const name = ref('')
-const items = ref([{ message: 'Foo' }, { message: 'Bar' }, {message: 'bro'}])
+  const name = ref('')
+  const items = ref([{ message: 'Foo' }, { message: 'Bar' }])
 </script>
+
+<style>
+</style>

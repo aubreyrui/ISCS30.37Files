@@ -1,5 +1,5 @@
 {
-  "name": "lab2-vue",
+  "name": "sample-project",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -10,12 +10,12 @@
   },
   "dependencies": {
     "axios": "^1.7.7",
-    "vue": "^3.5.12",
-    "vue-router": "^4.4.5"
+    "vue": "^3.4.29",
+    "vue-router": "^4.3.3"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^5.1.4",
-    "vite": "^5.4.8",
-    "vite-plugin-vue-devtools": "^7.4.6"
+    "@vitejs/plugin-vue": "^5.0.5",
+    "vite": "^5.3.1",
+    "vite-plugin-vue-devtools": "^7.3.1"
   }
 }
