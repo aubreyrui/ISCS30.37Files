@@ -1,34 +1,25 @@
 <template>
-  <div class="list-group" v-if="showItems == false">
+  <div class="list-group">
     <h1>
     </h1> 
-    <button class="list-group-item list-group-item-action" @click="updateSelected(cat.category)"  v-for="(cat, index) in cats" :key="index">{{ cat.category }}</button>
+    <button class="list-group-item list-group-item-action" @click="updateSelected(cat.category)"  v-for="cat in cats">{{ cat.category }}</button>
     </div>
-    <div v-else>
-      <button class="btn btn-primary" @click="()=> {showItems=false; selectedProduct=null;}"> Go back</button>
-      <h1>{{ this.selectedCat }}</h1>
-      <div v-for="(product, i) in this.apiResponse":key="i">
-        <ul v-if="product.category == this.selectedCat">
-        <li>
-          <a href="#" @click="showProduct(product)">{{ product.title }}</a>
-        </li>
-        </ul>
-        <br>
-        <div v-if="(selectedProduct==product)">
-          <h2>{{ product.title }}</h2>
-          <img :src="product.images" alt="">
-          <p>Description: {{ product.description }}</p> <br>
-          <p>Price: {{ product.price }}</p> <br>
-        </div>
-      </div>
+    <div>
+      <MountedAPI v-if="showItems && selectedCat == 'beauty'" selected-category=beauty> </MountedAPI>
+      <MountedAPI v-if="showItems && selectedCat == 'fragrances'" selected-category=fragrances> </MountedAPI>
+      <MountedAPI v-if="showItems && selectedCat == 'furniture'" selected-category=furniture> </MountedAPI>
+      <MountedAPI v-if="showItems && selectedCat == 'groceries'" selected-category=groceries> </MountedAPI>
     </div>
 </template>
 
 <script>
 
-import axios from 'axios'
+import MountedAPI from "@/components/MountedAPI.vue"
 
 export default {
+  components: {
+    MountedAPI
+  },
   data() {
     return {
       showItems: false,
@@ -39,8 +30,6 @@ export default {
         {category: 'groceries'}
       ],
       selectedCat: null,
-      apiResponse: [],
-      selectedProduct: null
     }
   },
   methods: {
@@ -48,19 +37,7 @@ export default {
         this.selectedCat = selected;
         this.showItems = true;
         console.log(selected);
-     },
-    showProduct(keyproduct) {
-      this.selectedProduct = keyproduct;
-      console.log(keyproduct)
-    } 
-  },
-  mounted() {
-    axios.get('https://dummyjson.com/products').then(res => {
-      console.log(res)
-      this.apiResponse = res.data.products
-    }).catch(err => {
-      console.error(err)
-    })
+     }
   }
 }
 
