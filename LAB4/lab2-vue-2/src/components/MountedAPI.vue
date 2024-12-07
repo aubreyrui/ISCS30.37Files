@@ -23,7 +23,6 @@ const props = defineProps({
 })
 
 const apiResponse = ref(null)
-const selectedProduct = ref('')
 
 onMounted(() => {
      axios.get('https://dummyjson.com/products').then(res => {
@@ -32,38 +31,5 @@ onMounted(() => {
     }).catch(err => {
     })
   })
-
-
-function showProduct(keyproduct) {
-      selectedProduct = keyproduct;
-      console.log(keyproduct)
-}
-
-    /*
-
-export default {
-  props: ['selectedCat'],
-  setup() {
-    return {
-      selectedProduct: null,
-    }
-  },
-  methods: {
-    showProduct(keyproduct) {
-      this.selectedProduct = keyproduct;
-      console.log(keyproduct)
-    } 
-  }
-}
-
-*/
-
-/*   mounted(){
-  axios.get('https://dummyjson.com/products').then(res => {
-      console.log(res)
-      this.apiResponse = res.data.products
-    }).catch(err => {
-      console.error(err)
-    })} */
 
 </script>
